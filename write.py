@@ -210,8 +210,6 @@ def writeReport():
         f.write(f'------------------above are {len(subdomain)} subdomains------------------------------------------------\n')
         f.write(f'The page that has most words is {longest_url}, and it has {longest} words\n')
         f.write('------------------above are longest page----------------------------------------------\n')
-        f.write(f"There are {count_url} subdomains\n")
-        f.write('------------------below are 50 top words except English stop word---------------------\n')
         f1.close()
 
         i = 1
@@ -223,6 +221,7 @@ def writeReport():
             i += 1
             print(f'{key}->{value}')
             f.write(f'{key}->{value}\n')
+        f.write('------------------above are 50 top words except English stop word---------------------\n')
         
     except:
         pass
