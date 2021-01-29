@@ -1,4 +1,5 @@
-import re
+
+import re, shelve, urllib
 from urllib.parse import urlparse
 from urllib.request import urlopen
 from utils.response import Response
@@ -8,27 +9,38 @@ from bs4 import BeautifulSoup
 allowed_url = ['.+\.cs.uci.edu/.*', '.+\.ics.uci.edu/.*', '.+\.informatics.uci.edu/.*', '.+\.stat.uci.edu/.*', 'today.uci.edu/department/information_computer_sciences/.*']
 allowed_url = [re.compile(x) for x in allowed_url]
 
-def scraper(url, resp):
+def scraper(url: str, resp: Response) -> list:
     links = extract_next_links(url, resp)
     return [link for link in links if is_valid(link)]
 
+
 def extract_next_links(url, resp):
-    # get html page from url
-    connection = urlopen(url)
-    content_encode = connection.read()
-    content_html = content_encode.decode('utf-8')
-    connection.close()
-    
-    soup = BeautifulSoup(content_html, 'html.parser')
-    links = []
-    for link in soup.findAll('a'):
-        links.append(link.get('href'))
-    return links
+    # get links from resp
+    if resp.status != 200: return []
+    else:
+        soup = BeautifulSoup(resp.raw_response.content, 'html.parser')
+        # Store text and url to shelve
+        try:
+            s = shelve.open('urlText.db')
+            if resp.raw_response.content != "":
+                s[url] = soup.get_text()
+
+            links = []
+            for link in soup.findAll('a'):
+                if link not in s:
+                    links.append(link.get('href'))         
+        finally:
+            s.close()
+        return links
 
 def is_valid(url):
     try:
         parsed = urlparse(url)
         if parsed.scheme not in set(["http", "https"]):
+            return False
+        elif parsed.fragment != "": 
+            return False
+        elif len(parsed.path.split('/')) > 20:
             return False
         else:
             if not any([i.match(url) for i in allowed_url]):
@@ -41,7 +53,7 @@ def is_valid(url):
             + r"|data|dat|exe|bz2|tar|msi|bin|7z|psd|dmg|iso"
             + r"|epub|dll|cnf|tgz|sha1"
             + r"|thmx|mso|arff|rtf|jar|csv"
-            + r"|rm|smil|wmv|swf|wma|zip|rar|gz)$", parsed.path.lower())
+            + r"|rm|smil|wmv|swf|wma|zip|rar|gz|ppsx)$", parsed.path.lower())
 
     except TypeError:
         print ("TypeError for ", parsed)
