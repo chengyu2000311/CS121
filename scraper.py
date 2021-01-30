@@ -4,6 +4,7 @@ from urllib.parse import urlparse
 from urllib.request import urlopen
 from utils.response import Response
 from bs4 import BeautifulSoup
+from collections import defaultdict
 
 # global variable for regular expression
 allowed_url = ['.+\.cs.uci.edu/.*', '.+\.ics.uci.edu/.*', '.+\.informatics.uci.edu/.*', '.+\.stat.uci.edu/.*', 'today.uci.edu/department/information_computer_sciences/.*']
@@ -16,19 +17,24 @@ def scraper(url: str, resp: Response) -> list:
 
 def extract_next_links(url, resp):
     # get links from resp
-    if resp.status != 200: return []
+    if 200 > resp.status or resp.status > 599 or resp.raw_response == None or resp.raw_response.content == "": return []
     else:
         soup = BeautifulSoup(resp.raw_response.content, 'html.parser')
-        # Store text and url to shelve
+        # Store url and text to shelve
         try:
+            url_parsed = urlparse(url)
             s = shelve.open('urlText.db')
-            if resp.raw_response.content != "":
-                s[url] = soup.get_text()
+            if url_parsed.fragment != "":
+                s[url] = soup.get_text() 
 
             links = []
-            for link in soup.findAll('a'):
-                if link not in s:
-                    links.append(link.get('href'))         
+            for link in soup.find_all('a'):
+                link = link.get('href')
+                if link != None and link not in s: # check if it is already crawled
+                    parsed = urlparse(link)
+                    last_index = parsed.path.split('/')[-1]
+                    if not (re.match('[0-9]+-[0-9]+-[0-9]+', last_index)):
+                        links.append(link) # check if last path is date in format 2000-02-01
         finally:
             s.close()
         return links
@@ -36,15 +42,25 @@ def extract_next_links(url, resp):
 def is_valid(url):
     try:
         parsed = urlparse(url)
+        The_path = parsed.path.split("/")
+        pass_dict = defaultdict(int)
+        s = shelve.open('urlText.db')
         if parsed.scheme not in set(["http", "https"]):
-            return False
-        elif parsed.fragment != "": 
             return False
         elif len(parsed.path.split('/')) > 20:
             return False
-        else:
-            if not any([i.match(url) for i in allowed_url]):
+        elif not any([i.match(url) for i in allowed_url]):
                 return False
+        elif parsed.fragment != "":
+                return False
+        for i in The_path:
+            if 'pdf' in i or 'img' in i:
+                return False
+            pass_dict[i] += 1
+            
+            if pass_dict[i] > 4:
+                return False
+
         return not re.match(
             r".*\.(css|js|bmp|gif|jpe?g|ico"
             + r"|png|tiff?|mid|mp2|mp3|mp4"
@@ -58,3 +74,6 @@ def is_valid(url):
     except TypeError:
         print ("TypeError for ", parsed)
         raise
+    finally:
+        s.close()
+

@@ -214,12 +214,10 @@ def writeReport():
 
         i = 1
         the_dict = computeWordFrequencies(tokenize('all_content.txt'))
-        print(len(the_dict))
         for key, value in sorted(the_dict.items(), key=lambda x:-x[1]):
             if key in stopWord: continue
             if i > 50: break
             i += 1
-            print(f'{key}->{value}')
             f.write(f'{key}->{value}\n')
         f.write('------------------above are 50 top words except English stop word---------------------\n')
         
