@@ -24,8 +24,7 @@ def extract_next_links(url, resp):
         try:
             url_parsed = urlparse(url)
             s = shelve.open('urlText.db')
-            if url_parsed.fragment != "":
-                s[url] = soup.get_text() 
+            s[url] = soup.get_text() 
 
             links = []
             for link in soup.find_all('a'):
@@ -50,9 +49,11 @@ def is_valid(url):
         elif len(parsed.path.split('/')) > 20:
             return False
         elif not any([i.match(url) for i in allowed_url]):
-                return False
+            return False
         elif parsed.fragment != "":
-                return False
+            return False
+        elif 'action=download' in parsed.query:
+            return False
         for i in The_path:
             if 'pdf' in i or 'img' in i:
                 return False
@@ -69,11 +70,12 @@ def is_valid(url):
             + r"|data|dat|exe|bz2|tar|msi|bin|7z|psd|dmg|iso"
             + r"|epub|dll|cnf|tgz|sha1"
             + r"|thmx|mso|arff|rtf|jar|csv"
-            + r"|rm|smil|wmv|swf|wma|zip|rar|gz|ppsx)$", parsed.path.lower())
+            + r"|rm|smil|wmv|swf|wma|zip|rar|gz|ppsx|Z)$", parsed.path.lower())
 
     except TypeError:
         print ("TypeError for ", parsed)
         raise
     finally:
         s.close()
+
 

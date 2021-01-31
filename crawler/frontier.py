@@ -26,9 +26,9 @@ class Frontier(object):
         # Load existing save file, or create one if it does not exist.
         self.save = shelve.open(self.config.save_file)
         if restart:
-            url_dict = shelve.open('urlText.db')
-            url_dict.clear()
-            url_dict.close()
+            if os.path.exists('../urlText.db'):
+                os.remove('../urlText.db')
+                
             for url in self.config.seed_urls:
                 self.add_url(url)
         else:
