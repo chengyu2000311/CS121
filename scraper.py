@@ -77,5 +77,3 @@ def is_valid(url):
         raise
     finally:
         s.close()
-
-
