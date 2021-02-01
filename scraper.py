@@ -10,7 +10,7 @@ from collections import defaultdict
 allowed_url = ['.+\.cs.uci.edu/.*', '.+\.ics.uci.edu/.*', '.+\.informatics.uci.edu/.*', '.+\.stat.uci.edu/.*', 'today.uci.edu/department/information_computer_sciences/.*']
 allowed_url = [re.compile(x) for x in allowed_url]
 #black_list the second is for wics calendar
-black_list = ['https://evoke.ics.uci.edu/qs-personal-data-landscapes-poster/?replytocom=.*', '.*/[0-9]+-[0-9]+-[0-9]+$']
+black_list = ['https://evoke.ics.uci.edu/qs-personal-data-landscapes-poster/?replytocom=.*', 'www.stat.ics.uci.edu/wp-content/.*', '.*/[0-9]+-[0-9]+-[0-9]+$']
 black_list = [re.compile(x) for x in black_list]
 
 def scraper(url: str, resp: Response) -> list:
