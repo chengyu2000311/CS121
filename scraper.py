@@ -9,6 +9,9 @@ from collections import defaultdict
 # global variable for regular expression
 allowed_url = ['.+\.cs.uci.edu/.*', '.+\.ics.uci.edu/.*', '.+\.informatics.uci.edu/.*', '.+\.stat.uci.edu/.*', 'today.uci.edu/department/information_computer_sciences/.*']
 allowed_url = [re.compile(x) for x in allowed_url]
+#black_list the second is for wics calendar
+black_list = ['https://evoke.ics.uci.edu/qs-personal-data-landscapes-poster/?replytocom=.*', '.*/[0-9]+-[0-9]+-[0-9]+$']
+black_list = [re.compile(x) for x in black_list]
 
 def scraper(url: str, resp: Response) -> list:
     links = extract_next_links(url, resp)
@@ -24,16 +27,17 @@ def extract_next_links(url, resp):
         try:
             url_parsed = urlparse(url)
             s = shelve.open('urlText.db')
+            if url_parsed.fragment != '':
+                url = url.split('#')[0]
             s[url] = soup.get_text() 
 
             links = []
             for link in soup.find_all('a'):
                 link = link.get('href')
                 if link != None and link not in s: # check if it is already crawled
-                    parsed = urlparse(link)
-                    last_index = parsed.path.split('/')[-1]
-                    if not (re.match('[0-9]+-[0-9]+-[0-9]+', last_index)):
-                        links.append(link) # check if last path is date in format 2000-02-01
+                    for i in black_list:
+                        if not (i.match(link)):
+                            links.append(link) # check if last path is date in format 2000-02-01
         finally:
             s.close()
         return links
@@ -49,8 +53,6 @@ def is_valid(url):
         elif len(parsed.path.split('/')) > 20:
             return False
         elif not any([i.match(url) for i in allowed_url]):
-            return False
-        elif parsed.fragment != "":
             return False
         elif 'action=download' in parsed.query:
             return False
@@ -77,3 +79,5 @@ def is_valid(url):
         raise
     finally:
         s.close()
+
+
