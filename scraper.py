@@ -36,7 +36,7 @@ def extract_next_links(url, resp):
                 if link != None and link not in s: # check if it is already crawled
                     if url_parsed.fragment != '':
                         link = link.split('#')[0]
-                    if re.match(’^https://evoke.ics.uci.edu/.+/?replytocom=.*', link):
+                    if re.match('^https://evoke.ics.uci.edu/.+/?replytocom=.*', link):
                         link = link.split('/?')[0]
                     for i in black_list:
                         if not (i.match(link)):
