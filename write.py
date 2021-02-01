@@ -196,15 +196,17 @@ def writeReport():
         longest_url = ''
         subdomain = set()
         for url, content in s.items():
+            parsed = urlparse(url)
             if re.match('.+\.ics\.uci\.edu', parsed.netloc):
                 subdomain.add(parsed.netloc)
-            for word in stopWord:
-                if word in tokenize(content):
+
+            for word in stopWord.split():
+                if word in content:
                     break
             else:
                 continue
+
             f1.write(content+'\n')
-            parsed = urlparse(url)
          
             if longest < len(content.split()):
                 longest = len(content.split())
