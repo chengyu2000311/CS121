@@ -32,9 +32,9 @@ def extract_next_links(url, resp):
             links = []
             for link in soup.find_all('a'):
                 link = link.get('href')
-                if urlparse(link).fragment != '':
-                    link = link.split('#')[0]
                 if link != None and link not in s: # check if it is already crawled
+                    if urlparse(link).fragment != '':
+                        link = link.split('#')[0]
                     for i in black_list:
                         if not (i.match(link)):
                             links.append(link) # check if last path is date in format 2000-02-01
