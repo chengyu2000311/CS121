@@ -10,7 +10,7 @@ from collections import defaultdict
 allowed_url = ['.+\.cs.uci.edu/.*', '.+\.ics.uci.edu/.*', '.+\.informatics.uci.edu/.*', '.+\.stat.uci.edu/.*', 'today.uci.edu/department/information_computer_sciences/.*']
 allowed_url = [re.compile(x) for x in allowed_url]
 #black_list the second is for wics calendar
-black_list = ['https://evoke.ics.uci.edu/qs-personal-data-landscapes-poster/?replytocom=.*', 'www.stat.ics.uci.edu/wp-content/.*', '.*/[0-9]+-[0-9]+-[0-9]+$']
+black_list = ['www.stat.ics.uci.edu/wp-content/.*', '.*/[0-9]+-[0-9]+-[0-9]+$']
 black_list = [re.compile(x) for x in black_list]
 
 def scraper(url: str, resp: Response) -> list:
@@ -32,9 +32,12 @@ def extract_next_links(url, resp):
             links = []
             for link in soup.find_all('a'):
                 link = link.get('href')
+                url_parsed = urlparse(link)
                 if link != None and link not in s: # check if it is already crawled
-                    if urlparse(link).fragment != '':
+                    if url_parsed.fragment != '':
                         link = link.split('#')[0]
+                    if re.match(’^https://evoke.ics.uci.edu/.+/?replytocom=.*', link):
+                        link = link.split('/?')[0]
                     for i in black_list:
                         if not (i.match(link)):
                             links.append(link) # check if last path is date in format 2000-02-01
