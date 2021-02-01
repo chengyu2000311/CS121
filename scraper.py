@@ -27,8 +27,6 @@ def extract_next_links(url, resp):
         try:
             url_parsed = urlparse(url)
             s = shelve.open('urlText.db')
-            if url_parsed.fragment != '':
-                url = url.split('#')[0]
             s[url] = soup.get_text() 
 
             links = []
@@ -50,7 +48,9 @@ def is_valid(url):
         s = shelve.open('urlText.db')
         if parsed.scheme not in set(["http", "https"]):
             return False
-        elif len(parsed.path.split('/')) > 20:
+        elif len(The_path) > 20:
+            return False
+        elif parsed.fragment != '':
             return False
         elif not any([i.match(url) for i in allowed_url]):
             return False
