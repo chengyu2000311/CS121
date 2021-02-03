@@ -10,7 +10,7 @@ from collections import defaultdict
 allowed_url = ['.+\.cs.uci.edu/.*', '.+\.ics.uci.edu/.*', '.+\.informatics.uci.edu/.*', '.+\.stat.uci.edu/.*', 'today.uci.edu/department/information_computer_sciences/.*']
 allowed_url = [re.compile(x) for x in allowed_url]
 #black_list the second is for wics calendar
-black_list = ['www.stat.ics.uci.edu/wp-content/.*', '.*/[0-9]+-[0-9]+-[0-9]+$']
+black_list = ['www.stat.ics.uci.edu/wp-content/.*', '.*wics.ics.uci.edu/events/[0-9]+-[0-9]+-[0-9]+/$', '.*wics.ics.uci.edu/events/[0-9]+-[0-9]+-[0-9]+$', '.*/[0-9]+-[0-9]+/$', '.*/[0-9]+-[0-9]+$']
 black_list = [re.compile(x) for x in black_list]
 
 def scraper(url: str, resp: Response) -> list:
@@ -38,9 +38,8 @@ def extract_next_links(url, resp):
                         link = link.split('#')[0]
                     if re.match('^https://evoke.ics.uci.edu/.+/?replytocom=.*', link):
                         link = link.split('/?')[0]
-                    for i in black_list:
-                        if not (i.match(link)):
-                            links.append(link) # check if last path is date in format 2000-02-01
+                    if not any([i.match(link) for i in black_list]):
+                        links.append(link)  # check if in black_list
         finally:
             s.close()
         return links
@@ -77,12 +76,13 @@ def is_valid(url):
             + r"|data|dat|exe|bz2|tar|msi|bin|7z|psd|dmg|iso"
             + r"|epub|dll|cnf|tgz|sha1"
             + r"|thmx|mso|arff|rtf|jar|csv"
-            + r"|rm|smil|wmv|swf|wma|zip|rar|gz|ppsx|Z)$", parsed.path.lower())
+            + r"|rm|smil|wmv|swf|wma|zip|rar|gz|ppsx|Z|apk)$", parsed.path.lower())
 
     except TypeError:
         print ("TypeError for ", parsed)
         raise
     finally:
         s.close()
+
 
 

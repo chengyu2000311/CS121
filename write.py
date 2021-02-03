@@ -197,7 +197,7 @@ def writeReport():
         subdomain = defaultdict(int)
         for url, content in s.items():
             parsed = urlparse(url)
-            if re.match('.+\.ics\.uci\.edu', parsed.netloc):
+            if re.match('.+\.ics\.uci\.edu', parsed.netloc) and parsed.netloc != 'www.ics.uci.edu':
                 subdomain[parsed.netloc.lower()] += 1
 
             for word in stopWord.split():
@@ -211,9 +211,9 @@ def writeReport():
             if longest < len(content.split()):
                 longest = len(content.split())
                 longest_url = url
-        
+
         for k, v in sorted(subdomain.items(), key=lambda x: x[0]):
-            f.write(f'{k}, {v}\n')
+            f.write(f'http://{k}, {v}\n')
 
         f.write(f'------------------above are {len(subdomain)} subdomains------------------------------------------------\n')
         f.write(f'The page that has most words is {longest_url}, and it has {longest} words\n')
@@ -236,4 +236,3 @@ def writeReport():
         s.close()
         f.close()
 
-writeReport()

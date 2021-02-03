@@ -1,142 +1,143 @@
-There are 11323 pages found
+There are 11639 pages found
 ------------------above are pages found------------------------------------------------
-swiki.ics.uci.edu
-mdogucu.ics.uci.edu
-nile.ics.uci.edu
-tippersweb.ics.uci.edu
-emj.ics.uci.edu
-sli.ics.uci.edu
-cradl.ics.uci.edu
-asterix.ics.uci.edu
-calendar.ics.uci.edu
-support.ics.uci.edu
-vision.ics.uci.edu
-xtune.ics.uci.edu
-elms.ics.uci.edu
-plrg.ics.uci.edu
-flamingo.ics.uci.edu
-psearch.ics.uci.edu
-mondego.ics.uci.edu
-helpdesk.ics.uci.edu
-checkmate.ics.uci.edu
-mhcid.ics.uci.edu
-www.graphics.ics.uci.edu
-i-sensorium.ics.uci.edu
-Transformativeplay.ics.uci.edu
-mds.ics.uci.edu
-archive.ics.uci.edu
-statconsulting.ics.uci.edu
-frost.ics.uci.edu
-create.ics.uci.edu
-cbcl.ics.uci.edu
-cloudberry.ics.uci.edu
-hai.ics.uci.edu
-www-db.ics.uci.edu
-hombao.ics.uci.edu
-sdcl.ics.uci.edu
-www.cert.ics.uci.edu
-cml.ics.uci.edu
-intranet.ics.uci.edu
-www.ics.uci.edu
-honors.ics.uci.edu
-ugradforms.ics.uci.edu
-graphics.ics.uci.edu
-unite.ics.uci.edu
-grape.ics.uci.edu
-ipf.ics.uci.edu
-hana.ics.uci.edu
-studentcouncil.ics.uci.edu
-perennialpolycultures.ics.uci.edu
-www.informatics.ics.uci.edu
-ipubmed.ics.uci.edu
-hack.ics.uci.edu
-tutors.ics.uci.edu
-nalini.ics.uci.edu
-sherlock.ics.uci.edu
-cwicsocal18.ics.uci.edu
-fr.ics.uci.edu
-riscit.ics.uci.edu
-cert.ics.uci.edu
-sconce.ics.uci.edu
-se.ics.uci.edu
-chenli.ics.uci.edu
-redmiles.ics.uci.edu
-sprout.ics.uci.edu
-stairs.ics.uci.edu
-sourcerer.ics.uci.edu
-iasl.ics.uci.edu
-mcs.ics.uci.edu
-wearablegames.ics.uci.edu
-student-council.ics.uci.edu
-isg.ics.uci.edu
-wics.ics.uci.edu
-acoi.ics.uci.edu
-mse.ics.uci.edu
-aiclub.ics.uci.edu
-mswe.ics.uci.edu
-mailman.ics.uci.edu
-ngs.ics.uci.edu
-futurehealth.ics.uci.edu
-computableplant.ics.uci.edu
-transformativeplay.ics.uci.edu
-jgarcia.ics.uci.edu
-malek.ics.uci.edu
-cyberclub.ics.uci.edu
-seal.ics.uci.edu
-duttgroup.ics.uci.edu
-evoke.ics.uci.edu
-------------------above are 85 subdomains------------------------------------------------
+http://acoi.ics.uci.edu, 56
+http://aiclub.ics.uci.edu, 1
+http://archive.ics.uci.edu, 6
+http://asterix-gerrit.ics.uci.edu, 1
+http://asterix.ics.uci.edu, 6
+http://calendar.ics.uci.edu, 1
+http://cbcl.ics.uci.edu, 3
+http://cert.ics.uci.edu, 2
+http://checkmate.ics.uci.edu, 1
+http://chenli.ics.uci.edu, 1
+http://cloudberry.ics.uci.edu, 47
+http://cml.ics.uci.edu, 170
+http://computableplant.ics.uci.edu, 38
+http://coronavirustwittermap.ics.uci.edu, 1
+http://cradl.ics.uci.edu, 25
+http://create.ics.uci.edu, 4
+http://cwicsocal18.ics.uci.edu, 12
+http://cyberclub.ics.uci.edu, 1
+http://duttgroup.ics.uci.edu, 99
+http://elms.ics.uci.edu, 1
+http://emj.ics.uci.edu, 46
+http://esl.ics.uci.edu, 1
+http://evoke.ics.uci.edu, 93
+http://flamingo.ics.uci.edu, 6
+http://fr.ics.uci.edu, 4
+http://frost.ics.uci.edu, 1
+http://futurehealth.ics.uci.edu, 13
+http://grape.ics.uci.edu, 13
+http://graphics.ics.uci.edu, 11
+http://hack.ics.uci.edu, 1
+http://hai.ics.uci.edu, 2
+http://hana.ics.uci.edu, 3
+http://helpdesk.ics.uci.edu, 1
+http://hombao.ics.uci.edu, 2
+http://honors.ics.uci.edu, 19
+http://i-sensorium.ics.uci.edu, 1
+http://iasl.ics.uci.edu, 5
+http://informatics.ics.uci.edu, 1
+http://intranet.ics.uci.edu, 1
+http://ipf.ics.uci.edu, 2
+http://ipubmed.ics.uci.edu, 1
+http://isg.ics.uci.edu, 133
+http://jgarcia.ics.uci.edu, 19
+http://mailman.ics.uci.edu, 6
+http://malek.ics.uci.edu, 2
+http://mcs.ics.uci.edu, 39
+http://mdogucu.ics.uci.edu, 1
+http://mds.ics.uci.edu, 11
+http://mhcid.ics.uci.edu, 16
+http://mondego.ics.uci.edu, 8
+http://mse.ics.uci.edu, 1
+http://mswe.ics.uci.edu, 22
+http://nalini.ics.uci.edu, 7
+http://ngs.ics.uci.edu, 2032
+http://nile.ics.uci.edu, 1
+http://perennialpolycultures.ics.uci.edu, 1
+http://plrg.ics.uci.edu, 14
+http://psearch.ics.uci.edu, 2
+http://redmiles.ics.uci.edu, 5
+http://riscit.ics.uci.edu, 1
+http://sconce.ics.uci.edu, 3
+http://sdcl.ics.uci.edu, 206
+http://se.ics.uci.edu, 11
+http://seal.ics.uci.edu, 9
+http://sherlock.ics.uci.edu, 2
+http://sli.ics.uci.edu, 790
+http://sourcerer.ics.uci.edu, 2
+http://sprout.ics.uci.edu, 2
+http://stairs.ics.uci.edu, 1
+http://statconsulting.ics.uci.edu, 5
+http://student-council.ics.uci.edu, 3
+http://studentcouncil.ics.uci.edu, 3
+http://support.ics.uci.edu, 2
+http://swiki.ics.uci.edu, 1
+http://tippersweb.ics.uci.edu, 4
+http://transformativeplay.ics.uci.edu, 57
+http://tutors.ics.uci.edu, 1
+http://ugradforms.ics.uci.edu, 1
+http://unite.ics.uci.edu, 10
+http://vision.ics.uci.edu, 8
+http://wearablegames.ics.uci.edu, 12
+http://wics.ics.uci.edu, 4073
+http://www-db.ics.uci.edu, 18
+http://www.cert.ics.uci.edu, 1
+http://www.graphics.ics.uci.edu, 1
+http://www.informatics.ics.uci.edu, 1
+http://xtune.ics.uci.edu, 6
+------------------above are 87 subdomains------------------------------------------------
 The page that has most words is http://www.ics.uci.edu/~kay/wordlist.txt, and it has 385018 words
 ------------------above are longest page----------------------------------------------
-events->35395
-research->31302
-computer->25767
-2018->24889
-information->20948
-2020->20836
-2019->19768
-search->18843
-uci->16344
-software->16091
-student->15572
-january->14844
-students->14662
-code->14420
-ramesh->14325
-will->13348
-2017->13308
-2016->13264
-pm->12940
-news->12704
-day->12476
-science->12259
-engineering->12026
-contact->12002
-2015->11864
-data->11840
-current->11571
-graduate->11331
-2021->11303
-informatics->10570
-wics->10499
-read->10473
-ics->10332
-undergraduate->10281
-may->10110
-10->9859
-support->9784
-courses->9207
-past->9182
-community->9182
-design->9003
-ph->8624
-people->8615
-books->8592
-bytes->8558
-september->8550
-projects->8543
-innovate->8529
-computing->8507
-november->8462
+events->36482
+research->32371
+computer->26994
+2018->25841
+information->21679
+2020->20984
+2019->20304
+search->19051
+uci->17121
+software->16622
+student->16181
+january->15347
+students->15330
+code->15216
+ramesh->14327
+2017->13585
+will->13508
+pm->13440
+2016->13419
+news->13038
+contact->12785
+science->12637
+day->12522
+engineering->12346
+data->12080
+2015->12075
+graduate->11860
+current->11791
+10->11622
+wics->11526
+2021->11429
+ics->11015
+informatics->10919
+undergraduate->10546
+read->10512
+support->10248
+may->10216
+design->9731
+community->9588
+courses->9390
+past->9227
+bytes->9081
+innovate->9058
+ph->8930
+computing->8912
+people->8888
+projects->8768
+books->8667
+policies->8654
+september->8640
 ------------------above are 50 top words except English stop word---------------------
-
