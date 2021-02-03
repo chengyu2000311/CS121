@@ -196,6 +196,7 @@ def writeReport():
         longest_url = ''
         subdomain = defaultdict(int)
         for url, content in s.items():
+            if url == 'count_page': continue
             parsed = urlparse(url)
             if re.match('.+\.ics\.uci\.edu', parsed.netloc) and parsed.netloc != 'www.ics.uci.edu':
                 subdomain[parsed.netloc.lower()] += 1
