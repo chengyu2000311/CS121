@@ -1,4 +1,3 @@
-
 import re, shelve, urllib
 from urllib.parse import urlparse
 from urllib.request import urlopen
@@ -36,6 +35,9 @@ def extract_next_links(url, resp):
                 if link != None and link not in s: # check if it is already crawled
                     if url_parsed.fragment != '':
                         link = link.split('#')[0]
+                    if 'count_page' not in s:
+                        s['count_page'] = 1
+                    else: s['count_page'] += 1
                     if re.match('^https://evoke.ics.uci.edu/.+/?replytocom=.*', link):
                         link = link.split('/?')[0]
                     if not any([i.match(link) for i in black_list]):
@@ -83,6 +85,3 @@ def is_valid(url):
         raise
     finally:
         s.close()
-
-
-
