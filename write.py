@@ -190,13 +190,13 @@ def writeReport():
         f = open('summary.txt', 'w')
         f1 = open('all_content.txt', 'w')
 
-        f.write("There are", s['count_page'], "pages found\n")
+        f.write("There are {len(s)} pages found\n")
         f.write('------------------above are pages found------------------------------------------------\n')
         longest = 0
         longest_url = ''
         subdomain = defaultdict(int)
         for url, content in s.items():
-            if url == 'count_page': continue
+          
             parsed = urlparse(url)
             if re.match('.+\.ics\.uci\.edu', parsed.netloc) and parsed.netloc != 'www.ics.uci.edu':
                 subdomain[parsed.netloc.lower()] += 1
