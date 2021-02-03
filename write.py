@@ -190,7 +190,7 @@ def writeReport():
         f = open('summary.txt', 'w')
         f1 = open('all_content.txt', 'w')
 
-        f.write(f'There are {s['count_page']} pages found\n')
+        f.write("There are", s['count_page'], "pages found\n")
         f.write('------------------above are pages found------------------------------------------------\n')
         longest = 0
         longest_url = ''
