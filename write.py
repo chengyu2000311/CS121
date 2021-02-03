@@ -2,7 +2,7 @@ import shelve
 import re, os
 from urllib.parse import urlparse
 from PartA import tokenize, computeWordFrequencies
-
+from collections import defaultdict
 stopWord= '''
 a 
 about
@@ -194,11 +194,11 @@ def writeReport():
         f.write('------------------above are pages found------------------------------------------------\n')
         longest = 0
         longest_url = ''
-        subdomain = set()
+        subdomain = defaultdict(int)
         for url, content in s.items():
             parsed = urlparse(url)
             if re.match('.+\.ics\.uci\.edu', parsed.netloc):
-                subdomain.add(parsed.netloc)
+                subdomain[parsed.netloc.lower()] += 1
 
             for word in stopWord.split():
                 if word in content:
@@ -212,8 +212,8 @@ def writeReport():
                 longest = len(content.split())
                 longest_url = url
         
-        for u in subdomain:
-            f.write(f'{u}\n')
+        for k, v in sorted(subdomain.items(), key=lambda x: x[0]):
+            f.write(f'{k}, {v}\n')
 
         f.write(f'------------------above are {len(subdomain)} subdomains------------------------------------------------\n')
         f.write(f'The page that has most words is {longest_url}, and it has {longest} words\n')
@@ -230,8 +230,10 @@ def writeReport():
         f.write('------------------above are 50 top words except English stop word---------------------\n')
         
     except:
-        pass
+        f.write("Error occurs\n")
 
     finally:
         s.close()
         f.close()
+
+writeReport()
